@@ -2,39 +2,36 @@ import glob, os, tqdm
 import numpy as np
 from skimage.io import imread
 import pandas as pd
-# sys.path.append(os.path.join("Y:",os.sep,'Nicola_Gritti','analysis_code','scaling_analysis','funcs'))
-# from _01_generate_masks import tif2binary
-# from _02_compute_volumes import binary2volume
 
 pxl_size = [0.3461,0.3461,2]
 
 folders = [
-    os.path.join('2021-06-06_190835-10uM-Mat'),     
-    os.path.join('2021-06-06_195336-9uM-Mat'),    
-    os.path.join('2021-06-06_200421-9uM-Mat'),
-    os.path.join('2021-06-06_201742-9uM-Mat'),
-    os.path.join('2021-06-06_204011-8uM-Mat'),
-    os.path.join('2021-06-06_205431-8uM-Mat'),
-    os.path.join('2021-06-06_211940-7uM-Mat'),
-    os.path.join('2021-06-06_212715-7uM-Mat'),
-    os.path.join('2021-06-06_214629-6uM-Mat'),
-    os.path.join('2021-06-06_215233-6uM-Mat'),
-    os.path.join('2021-06-06_220010-5uM-Mat'),
-    os.path.join('2021-06-06_220509-5uM-Mat'),
-    os.path.join('2021-06-06_221019-5uM-Mat'),
+    os.path.join('190835-10uM'),     
+    os.path.join('195336-10uM'),    
+    os.path.join('200421-10uM'),
+    os.path.join('201742-10uM'),
+    os.path.join('204011-10uM'),
+    os.path.join('205431-10uM'),
+    os.path.join('211940-7uM'),
+    os.path.join('212715-7uM'),
+    os.path.join('214629-7uM'),
+    os.path.join('215233-7uM'),
+    os.path.join('220010-5uM'),
+    os.path.join('220509-5uM'),
+    os.path.join('221019-5uM'),
     ]
 
 conditions = [
     '10uM',
-    '9uM',
-    '9uM',
-    '9uM',    
-    '8uM',
-    '8uM',
+    '10uM',
+    '10uM',
+    '10uM',    
+    '10uM',
+    '10uM',
     '7uM',
     '7uM',
-    '6uM',
-    '6uM',
+    '7uM',
+    '7uM',
     '5uM',
     '5uM',
     '5uM',
@@ -42,7 +39,7 @@ conditions = [
     ]
 
 channel_orders = [
-    ['Tbx18','Uncx41','Bra','Sox2'] for i in folders
+    ['TBX18','UNCX4.1','BRACHYURY','SOX2'] for i in folders
     ]
 
 #############################################
@@ -91,7 +88,4 @@ for sample, cond, ch_order in tqdm.tqdm(zip(folders, conditions, channel_orders)
 
     df_all = pd.concat([df_all, df], ignore_index=False)
             
-df_all.to_csv('Volumes.csv', index=False)
-# df_all.to_excel('Volumes.xlsx', index=False)
-        
-    
+df_all.to_csv('Volumes.csv', index=False)  
